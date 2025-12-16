@@ -207,15 +207,15 @@
 
       const validators = {
         name: {
-          pattern: /^[a-zA-ZÀ-ÿs-']{2,50}$/,
+          pattern: /^[a-zA-ZÀ-ÿ\s\-']{2,50}$/,
           message: 'Name must be 2-50 characters and contain only letters, spaces, hyphens, and apostrophes.'
         },
         email: {
-          pattern: /^[^s@]+@[^s@]+.[^s@]+$/,
+          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
           message: 'Please enter a valid email address (e.g., example@domain.com).'
         },
         phone: {
-          pattern: /^[ds+-()]{10,20}$/,
+          pattern: /^[\d\s+\-()]{10,20}$/,
           message: 'Phone number must be 10-20 characters and contain only digits, spaces, +, -, (, ).'
         },
         message: {
@@ -393,7 +393,7 @@
       if (counters.length === 0) return;
 
       const animateCounter = (el) => {
-        const target = parseInt(el.textContent.replace(/[^d]/g, ''));
+        const target = parseInt(el.textContent.replace(/[^\d]/g, ''));
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
